@@ -59,7 +59,6 @@ typedef struct {
 
 /**
  * 文件inode节点结构
- * 100Ｂ
 */
 typedef struct {
     unsigned int id;        // 4B，inode节点索引
@@ -67,7 +66,6 @@ typedef struct {
     unsigned char isDir;    // 1B，文件类型 0-file 1-dir
     unsigned int parent;    // 4B，父目录inode节点索引
     unsigned int length;    // 4B，文件长度，unsigned int最大2^32-1(4GB-1B)，目录文件则为子文件项数量，即if file->filesize  if dir->filenum
-    unsigned int addr[12];  // 12*4B，文件内容索引，文件前10项为直接索引，目录前11项为直接索引
     unsigned int blockId;   // 文件项所在的目录数据块的id，便于删除时定位
 } INode, *PtrINode;
 
